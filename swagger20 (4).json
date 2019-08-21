@@ -1,0 +1,75 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "No description",
+    "version" : "1.0.0",
+    "title" : "tes"
+  },
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/api/user" : {
+      "post" : {
+        "tags" : [ "user" ],
+        "summary" : "Register",
+        "description" : "untuk signup",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "required" : [ "email", "password", "roles", "username" ],
+            "properties" : {
+              "user_foto" : {
+                "type" : "string",
+                "format" : "binary",
+                "description" : "foto user"
+              },
+              "username" : {
+                "type" : "string",
+                "description" : "usernamenya",
+                "minLength" : 8,
+                "maxLength" : 16,
+                "example" : "baksopedas"
+              },
+              "password" : {
+                "type" : "string",
+                "description" : "password",
+                "minLength" : 8,
+                "maxLength" : 16
+              },
+              "email" : {
+                "type" : "string",
+                "description" : "emailnya",
+                "minLength" : 8,
+                "maxLength" : 50
+              },
+              "roles" : {
+                "type" : "string",
+                "description" : "rolesnya",
+                "example" : "a"
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "decoded"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "berhasil buat akun"
+          },
+          "422" : {
+            "description" : "gagal"
+          },
+          "501" : {
+            "description" : "error"
+          }
+        }
+      }
+    }
+  }
+}
